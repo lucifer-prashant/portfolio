@@ -46,7 +46,10 @@ export function ProjectsSection() {
   }, [])
 
   const scrollToSlide = (index: number) => {
-    slideRefs.current[index]?.scrollIntoView({ behavior: "smooth", block: "start" })
+    const container = containerRef.current
+    const slide = slideRefs.current[index]
+    if (!container || !slide) return
+    container.scrollTo({ top: slide.offsetTop, behavior: "smooth" })
   }
 
   return (
@@ -72,8 +75,7 @@ export function ProjectsSection() {
       {/* Scroll container */}
       <div
         ref={containerRef}
-        className="h-full overflow-y-scroll snap-y snap-mandatory"
-        style={{ scrollbarWidth: "none" }}
+        className="h-full overflow-y-scroll snap-y snap-mandatory scrollbar-none"
       >
         {allProjects.map((project, index) => (
           <ProjectSlide
@@ -169,9 +171,13 @@ function ProjectSlide({
 
         {/* Project name */}
         <h2
-          className={`font-display font-black tracking-tighter leading-[0.9] mb-8 text-white transition-all duration-500 ${
-            isActive ? "opacity-100 translate-y-0 project-reveal" : "opacity-0 translate-y-4"
-          } ${isActive && isInProgress ? "opacity-50" : ""}`}
+          className={`font-display font-black tracking-tighter leading-[0.9] mb-8 text-white transition-[opacity,transform] duration-500 ${
+            isActive
+              ? isInProgress
+                ? "opacity-50 translate-y-0"
+                : "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-4"
+          }`}
           style={{ fontSize: "clamp(3rem,8vw,7rem)" }}
         >
           {project.name}
@@ -179,7 +185,7 @@ function ProjectSlide({
 
         {/* Story quote */}
         <p
-          className={`font-body text-base md:text-lg italic leading-relaxed mb-8 max-w-lg transition-all duration-500 ${
+          className={`font-body text-base md:text-lg italic leading-relaxed mb-8 max-w-lg transition-[opacity,transform] duration-500 ${
             isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
           style={{
@@ -194,7 +200,7 @@ function ProjectSlide({
 
         {/* Tech + metrics row */}
         <div
-          className={`flex flex-wrap items-center gap-6 mb-10 transition-all duration-500 ${
+          className={`flex flex-wrap items-center gap-6 mb-10 transition-[opacity,transform] duration-500 ${
             isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
           style={{ transitionDelay: "180ms" }}
@@ -223,7 +229,7 @@ function ProjectSlide({
 
         {/* Action links */}
         <div
-          className={`flex items-center gap-3 transition-all duration-500 ${
+          className={`flex items-center gap-3 transition-[opacity,transform] duration-500 ${
             isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
           style={{ transitionDelay: "250ms" }}
