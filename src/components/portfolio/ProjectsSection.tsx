@@ -171,7 +171,7 @@ function ProjectSlide({
         <h2
           className={`font-display font-black tracking-tighter leading-[0.9] mb-8 text-white transition-all duration-500 ${
             isActive ? "opacity-100 translate-y-0 project-reveal" : "opacity-0 translate-y-4"
-          } ${isInProgress ? "opacity-50" : ""}`}
+          } ${isActive && isInProgress ? "opacity-50" : ""}`}
           style={{ fontSize: "clamp(3rem,8vw,7rem)" }}
         >
           {project.name}
