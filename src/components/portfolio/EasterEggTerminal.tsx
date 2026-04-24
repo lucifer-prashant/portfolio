@@ -88,7 +88,7 @@ export function EasterEggTerminal() {
 						type: "output",
 						text: `
 ╔═══════════════════════════════════════════════╗
-║   WELCOME TO THE ANOMALY TERMINAL             ║
+║   WELCOME TO THE TERMINAL                     ║
 ║   Type 'help' for available commands          ║
 ╚═══════════════════════════════════════════════╝
 `,

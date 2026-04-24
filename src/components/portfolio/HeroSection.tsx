@@ -117,7 +117,7 @@ export function HeroSection() {
 
       {/* Identity tag — bottom right */}
       <div className="absolute bottom-12 right-8 lg:right-24 font-mono text-[10px] text-gray-800 hidden lg:block tracking-wider">
-        // the anomaly
+        // prashant verma
       </div>
 
       {/* Scroll indicator */}
