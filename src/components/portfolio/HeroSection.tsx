@@ -96,7 +96,7 @@ export function HeroSection() {
           <button
             type="button"
             onClick={() => scrollToSection("projects")}
-            className="group flex items-center gap-2.5 px-7 py-3.5 rounded-lg font-mono text-xs uppercase tracking-widest text-white font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(124,58,237,0.35)]"
+            className="group flex items-center gap-2.5 px-7 py-3.5 rounded-lg font-mono text-xs uppercase tracking-widest text-white font-medium transition-all duration-300 btn-lift arrow-nudge hover:shadow-[0_8px_30px_rgba(124,58,237,0.35)]"
             style={{
               background: "linear-gradient(135deg, #7c3aed, #db2777)",
             }}
@@ -108,7 +108,7 @@ export function HeroSection() {
           <button
             type="button"
             onClick={() => scrollToSection("about")}
-            className="flex items-center gap-2.5 px-7 py-3.5 rounded-lg font-mono text-xs uppercase tracking-widest text-gray-500 border border-white/[0.1] hover:text-white hover:border-white/[0.25] transition-all duration-300 hover:-translate-y-0.5"
+            className="flex items-center gap-2.5 px-7 py-3.5 rounded-lg font-mono text-xs uppercase tracking-widest text-gray-500 border border-white/[0.1] hover:text-white hover:border-white/[0.25] transition-all duration-300 btn-lift"
           >
             About Me
           </button>

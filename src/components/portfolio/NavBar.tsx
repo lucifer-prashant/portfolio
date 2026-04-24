@@ -82,7 +82,7 @@ export function NavBar() {
       <button
         onClick={handleResumeDownload}
         disabled={isDownloading}
-        className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.12em] text-gray-500 hover:text-white border border-white/[0.12] hover:border-white/[0.3] px-4 py-2 rounded transition-all duration-200 disabled:opacity-50 shrink-0"
+        className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.12em] text-gray-500 hover:text-white border border-white/[0.12] hover:border-white/[0.3] px-4 py-2 rounded transition-all duration-200 disabled:opacity-50 shrink-0 btn-lift"
       >
         {isDownloading ? (
           <>

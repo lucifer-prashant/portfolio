@@ -42,7 +42,7 @@ export function GlitchText({ text, className = "", scrambleOnLoad = true, delay 
           if (intervalRef.current) clearInterval(intervalRef.current);
         }
 
-        iteration += 1 / 3;
+        iteration += 1 / 2;
       }, 40);
     }, delay);
 

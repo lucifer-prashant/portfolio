@@ -136,7 +136,9 @@ export function AboutSection() {
 									<span
 										key={skill}
 										style={{ transitionDelay: `${index * 120}ms` }}
-										className="font-body text-sm px-4 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.06] text-gray-400 hover:bg-white/[0.06] hover:border-white/[0.1] hover:text-gray-300 transition-all">
+										className={`font-body text-sm px-4 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.06] text-gray-400 hover:bg-white/[0.06] hover:border-white/[0.1] hover:text-gray-300 transition-all transition-[opacity,transform] duration-500 ${
+											isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+										}`}>
 										{skill}
 									</span>
 								))}
@@ -154,7 +156,9 @@ export function AboutSection() {
 										<span
 											key={skill}
 											style={{ transitionDelay: `${index * 120}ms` }}
-											className="font-body text-sm px-4 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.06] text-gray-400 hover:bg-white/[0.06] hover:border-white/[0.1] hover:text-gray-300 transition-all">
+											className={`font-body text-sm px-4 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.06] text-gray-400 hover:bg-white/[0.06] hover:border-white/[0.1] hover:text-gray-300 transition-all transition-[opacity,transform] duration-500 ${
+									isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+								}`}>
 											{skill}
 										</span>
 									)
@@ -173,7 +177,9 @@ export function AboutSection() {
 										<span
 											key={skill}
 											style={{ transitionDelay: `${index * 120}ms` }}
-											className="font-body text-sm px-4 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.06] text-gray-400 hover:bg-white/[0.06] hover:border-white/[0.1] hover:text-gray-300 transition-all">
+											className={`font-body text-sm px-4 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.06] text-gray-400 hover:bg-white/[0.06] hover:border-white/[0.1] hover:text-gray-300 transition-all transition-[opacity,transform] duration-500 ${
+									isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+								}`}>
 											{skill}
 										</span>
 									)
