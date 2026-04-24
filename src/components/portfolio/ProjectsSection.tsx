@@ -1,284 +1,263 @@
 "use client"
 
-import { useState } from "react"
-import { ExternalLink, Github, X, ArrowRight, ArrowUpRight } from "lucide-react"
+import { useState, useEffect, useRef } from "react"
+import { ExternalLink, Github } from "lucide-react"
 import Link from "next/link"
 import projectsData from "@/data/projects.json"
 
 interface Project {
-	id: string
-	name: string
-	tagline: string
-	status: "LIVE" | "ARCHIVED" | "IN PROGRESS"
-	date: string
-	tech: string[]
-	description: string
-	liveUrl?: string
-	githubUrl: string
-	metrics: Record<string, string>
+  id: string
+  name: string
+  tagline: string
+  story: string
+  status: "LIVE" | "ARCHIVED" | "IN PROGRESS"
+  date: string
+  tech: string[]
+  description: string
+  liveUrl?: string
+  githubUrl: string
+  metrics: Record<string, string>
 }
 
 const allProjects: Project[] = projectsData as unknown as Project[]
-const projects = allProjects.filter((p) => p.status === "LIVE").slice(0, 3)
-
-const statusColors = {
-	LIVE: "bg-white/[0.08] text-gray-300 border border-white/[0.15]",
-	ARCHIVED: "bg-white/[0.04] text-gray-600 border border-white/[0.08]",
-	"IN PROGRESS": "bg-white/[0.06] text-gray-400 border border-white/[0.12]",
-}
 
 export function ProjectsSection() {
-	const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const slideRefs = useRef<(HTMLDivElement | null)[]>([])
 
-	return (
-		<section
-			id="projects"
-			className="relative z-10 px-6 md:px-12 lg:px-24 py-32">
-			{/* Minimal gradient accent */}
-			<div className="absolute inset-0 overflow-hidden pointer-events-none">
-				<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/[0.01] rounded-full blur-[128px]" />
-			</div>
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
 
-			{/* Section header */}
-			<div className="relative mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-				<div>
-					<span className="inline-block font-mono text-xs text-gray-600 uppercase tracking-widest mb-6">
-						Selected Work
-					</span>
-					<h2 className="font-display text-5xl md:text-6xl lg:text-7xl text-white font-bold tracking-tighter">
-						Featured
-						<br />
-						<span className="gradient-text-subtle">Projects</span>
-					</h2>
-				</div>
+    const observers = slideRefs.current.map((slide, index) => {
+      if (!slide) return null
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveIndex(index)
+        },
+        { threshold: 0.5, root: container }
+      )
+      observer.observe(slide)
+      return observer
+    })
 
-				<Link
-					href="/projects"
-					className="group flex items-center gap-2 font-body text-sm text-gray-500 hover:text-white transition-colors bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.08] hover:border-white/[0.15] px-6 py-3 rounded-full w-fit">
-					View All Work
-					<ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-				</Link>
-			</div>
+    return () => observers.forEach((o) => o?.disconnect())
+  }, [])
 
-			{/* Projects grid - refined cards */}
-			<div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-				{projects.map((project, index) => (
-					<button
-						key={project.id}
-						onClick={() => setSelectedProject(project)}
-						className="group text-left">
-						<div className="relative h-full p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-white/[0.15] transition-all duration-500 hover:bg-white/[0.04] card-hover overflow-hidden">
-							{/* Subtle gradient overlay on hover */}
-							<div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+  const scrollToSlide = (index: number) => {
+    slideRefs.current[index]?.scrollIntoView({ behavior: "smooth", block: "start" })
+  }
 
-							{/* Status badge */}
-							<div className="relative flex items-center justify-between mb-6">
-								<span className="font-mono text-xs text-gray-600">
-									{project.date}
-								</span>
-								<span
-									className={`font-mono text-[10px] px-3 py-1 rounded-full ${statusColors[project.status]}`}>
-									{project.status}
-								</span>
-							</div>
+  return (
+    <section id="projects" className="relative h-screen">
 
-							{/* Project info */}
-							<div className="relative">
-								<h3 className="font-display text-2xl text-white group-hover:text-gray-200 transition-colors mb-3 tracking-tight">
-									{project.name}
-								</h3>
-								<p className="font-body text-sm text-gray-500 group-hover:text-gray-400 mb-6 line-clamp-2 leading-relaxed">
-									{project.tagline}
-								</p>
+      {/* Side dot indicator */}
+      <div className="absolute right-6 lg:right-12 top-1/2 -translate-y-1/2 z-20 hidden md:flex flex-col gap-3">
+        {allProjects.map((_, i) => (
+          <button
+            type="button"
+            key={i}
+            onClick={() => scrollToSlide(i)}
+            aria-label={`Go to project ${i + 1}`}
+            className={`rounded-full transition-all duration-300 ${
+              i === activeIndex
+                ? "w-1 h-6 bg-violet-500"
+                : "w-1 h-1.5 bg-white/20 hover:bg-white/40"
+            }`}
+          />
+        ))}
+      </div>
 
-								{/* Tech stack */}
-								<div className="flex flex-wrap gap-2 mb-6">
-									{project.tech.slice(0, 3).map((t) => (
-										<span
-											key={t}
-											className="font-mono text-[10px] px-2.5 py-1 rounded-md bg-white/[0.04] text-gray-600">
-											{t}
-										</span>
-									))}
-								</div>
+      {/* Scroll container */}
+      <div
+        ref={containerRef}
+        className="h-full overflow-y-scroll snap-y snap-mandatory"
+        style={{ scrollbarWidth: "none" }}
+      >
+        {allProjects.map((project, index) => (
+          <ProjectSlide
+            key={project.id}
+            project={project}
+            index={index}
+            isActive={activeIndex === index}
+            onRef={(el) => {
+              slideRefs.current[index] = el
+            }}
+          />
+        ))}
+      </div>
 
-								{/* Arrow indicator */}
-								<div className="flex items-center gap-2 text-gray-600 opacity-0 group-hover:opacity-100 transition-all transform translate-x-0 group-hover:translate-x-2">
-									<span className="font-body text-sm">View Details</span>
-									<ArrowUpRight className="w-4 h-4" />
-								</div>
-							</div>
-						</div>
-					</button>
-				))}
-			</div>
-
-			{/* Project Modal */}
-			{selectedProject && (
-				<ProjectModal
-					project={selectedProject}
-					onClose={() => setSelectedProject(null)}
-				/>
-			)}
-		</section>
-	)
+      {/* View all link */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
+        <Link
+          href="/projects"
+          className="font-mono text-[10px] uppercase tracking-[0.2em] text-gray-700 hover:text-gray-400 transition-colors"
+        >
+          View all work →
+        </Link>
+      </div>
+    </section>
+  )
 }
 
-function ProjectModal({
-	project,
-	onClose,
+function ProjectSlide({
+  project,
+  index,
+  isActive,
+  onRef,
 }: {
-	project: Project
-	onClose: () => void
+  project: Project
+  index: number
+  isActive: boolean
+  onRef: (el: HTMLDivElement | null) => void
 }) {
-	return (
-		<div
-			className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-			onClick={onClose}>
-			{/* Backdrop */}
-			<div className="absolute inset-0 bg-black/95 backdrop-blur-xl" />
+  const isInProgress = project.status === "IN PROGRESS"
+  const hasLiveUrl =
+    project.liveUrl &&
+    project.liveUrl !== project.githubUrl &&
+    project.liveUrl !== "#"
 
-			{/* Modal content */}
-			<div
-				className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-[#0a0a0a] backdrop-blur-xl rounded-2xl border border-white/[0.12] shadow-2xl"
-				onClick={(e) => e.stopPropagation()}
-				style={{
-					animation: "modalIn 0.3s ease-out",
-				}}>
-				{/* Header */}
-				<div className="sticky top-0 z-10 bg-black/90 backdrop-blur-xl border-b border-white/[0.08] px-8 py-6 flex items-center justify-between">
-					<div className="flex items-center gap-4">
-						<h3 className="font-display text-3xl md:text-4xl text-white font-bold tracking-tight">
-							{project.name}
-						</h3>
-						<span
-							className={`font-mono text-xs px-3 py-1 rounded-full ${statusColors[project.status]}`}>
-							{project.status}
-						</span>
-					</div>
-					<button
-						onClick={onClose}
-						className="w-10 h-10 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] hover:border-white/[0.15] flex items-center justify-center transition-all group">
-						<X className="w-5 h-5 text-gray-500 group-hover:text-white" />
-					</button>
-				</div>
+  return (
+    <div
+      ref={onRef}
+      className="relative h-full snap-start flex items-center px-6 md:px-12 lg:px-24 overflow-hidden"
+    >
+      {/* Giant background number */}
+      <div
+        className="absolute right-16 lg:right-32 top-1/2 -translate-y-1/2 font-display font-black select-none leading-none pointer-events-none transition-all duration-700"
+        style={{
+          fontSize: "clamp(8rem, 22vw, 22rem)",
+          color: isActive ? "rgba(124,58,237,0.04)" : "rgba(255,255,255,0.015)",
+        }}
+      >
+        {String(index + 1).padStart(2, "0")}
+      </div>
 
-				{/* Content */}
-				<div className="p-8">
-					<div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-						{/* Demo preview area */}
-						<div className="lg:col-span-3">
-							<div className="relative aspect-video bg-black rounded-xl overflow-hidden border border-white/[0.08]">
-								{project.liveUrl ? (
-									<iframe
-										src={project.liveUrl}
-										className="w-full h-full"
-										title={project.name}
-									/>
-								) : (
-									<div className="absolute inset-0 flex items-center justify-center">
-										<div className="text-center">
-											<div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/[0.04] flex items-center justify-center">
-												<ExternalLink className="w-8 h-8 text-gray-600" />
-											</div>
-											<p className="font-body text-sm text-gray-600">
-												Preview unavailable
-											</p>
-										</div>
-									</div>
-								)}
-							</div>
-						</div>
+      {/* Left accent line */}
+      <div
+        className={`absolute left-0 top-1/4 h-1/2 w-[2px] transition-all duration-700 ${
+          isActive
+            ? "bg-gradient-to-b from-violet-500/50 to-pink-500/50"
+            : "bg-white/5"
+        }`}
+      />
 
-						{/* Metadata */}
-						<div className="lg:col-span-2 space-y-6">
-							{/* Description */}
-							<div>
-								<h4 className="font-mono text-xs text-gray-600 uppercase tracking-wider mb-3">
-									About
-								</h4>
-								<p className="font-body text-gray-400 leading-relaxed">
-									{project.description}
-								</p>
-							</div>
+      {/* Content */}
+      <div className="relative z-10 max-w-3xl">
 
-							{/* Tech stack */}
-							<div>
-								<h4 className="font-mono text-xs text-gray-600 uppercase tracking-wider mb-3">
-									Stack
-								</h4>
-								<div className="flex flex-wrap gap-2">
-									{project.tech.map((t) => (
-										<span
-											key={t}
-											className="font-mono text-xs px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-gray-500">
-											{t}
-										</span>
-									))}
-								</div>
-							</div>
+        {/* Status + index label */}
+        <div
+          className={`font-mono text-[10px] uppercase tracking-[0.25em] mb-6 transition-all duration-500 ${
+            isActive ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <span className="text-gray-700">{String(index + 1).padStart(2, "0")}</span>
+          <span className="mx-3 text-gray-800">/</span>
+          <span
+            className={
+              project.status === "LIVE"
+                ? "text-emerald-700"
+                : project.status === "IN PROGRESS"
+                ? "text-amber-700"
+                : "text-gray-700"
+            }
+          >
+            {project.status}
+          </span>
+        </div>
 
-							{/* Metrics */}
-							<div>
-								<h4 className="font-mono text-xs text-gray-600 uppercase tracking-wider mb-3">
-									Metrics
-								</h4>
-								<div className="grid grid-cols-2 gap-3">
-									{Object.entries(project.metrics).map(([key, value]) => (
-										<div
-											key={key}
-											className="bg-white/[0.03] rounded-xl p-4 border border-white/[0.06]">
-											<div className="font-display text-2xl text-white font-bold gradient-text-subtle">
-												{value}
-											</div>
-											<div className="font-mono text-[10px] text-gray-600 uppercase mt-1">
-												{key}
-											</div>
-										</div>
-									))}
-								</div>
-							</div>
+        {/* Project name */}
+        <h2
+          className={`font-display font-black tracking-tighter leading-[0.9] mb-8 text-white transition-all duration-500 ${
+            isActive ? "opacity-100 translate-y-0 project-reveal" : "opacity-0 translate-y-4"
+          } ${isInProgress ? "opacity-50" : ""}`}
+          style={{ fontSize: "clamp(3rem,8vw,7rem)" }}
+        >
+          {project.name}
+        </h2>
 
-							{/* CTAs */}
-							<div className="flex gap-3 pt-4">
-								{project.githubUrl && project.githubUrl !== "#" && (
-									<a
-										href={project.githubUrl}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="flex-1 px-5 py-3 rounded-xl font-body text-sm bg-white/[0.04] border border-white/[0.08] text-white hover:bg-white/[0.06] hover:border-white/[0.12] transition-all flex items-center justify-center gap-2">
-										<Github className="w-4 h-4" />
-										Code
-									</a>
-								)}
-								{project.liveUrl && (
-									<a
-										href={project.liveUrl}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="flex-1 px-5 py-3 rounded-xl font-body text-sm bg-white text-black hover:bg-gray-200 transition-all flex items-center justify-center gap-2 font-medium">
-										<ExternalLink className="w-4 h-4" />
-										Live
-									</a>
-								)}
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+        {/* Story quote */}
+        <p
+          className={`font-body text-base md:text-lg italic leading-relaxed mb-8 max-w-lg transition-all duration-500 ${
+            isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+          style={{
+            transitionDelay: "100ms",
+            color: isInProgress
+              ? "rgba(167,139,250,0.4)"
+              : "rgba(167,139,250,0.85)",
+          }}
+        >
+          &ldquo;{project.story}&rdquo;
+        </p>
 
-			<style jsx>{`
-				@keyframes modalIn {
-					from {
-						opacity: 0;
-						transform: scale(0.96) translateY(20px);
-					}
-					to {
-						opacity: 1;
-						transform: scale(1) translateY(0);
-					}
-				}
-			`}</style>
-		</div>
-	)
+        {/* Tech + metrics row */}
+        <div
+          className={`flex flex-wrap items-center gap-6 mb-10 transition-all duration-500 ${
+            isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+          style={{ transitionDelay: "180ms" }}
+        >
+          <div className="flex flex-wrap gap-2">
+            {project.tech.map((t) => (
+              <span
+                key={t}
+                className="font-mono text-[10px] px-2.5 py-1 rounded bg-white/[0.04] border border-white/[0.06] text-gray-600 uppercase tracking-wider"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+          <div className="flex gap-6">
+            {Object.entries(project.metrics).map(([key, value]) => (
+              <div key={key}>
+                <div className="font-display text-xl text-white font-bold">{value}</div>
+                <div className="font-mono text-[9px] text-gray-700 uppercase tracking-wider">
+                  {key}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Action links */}
+        <div
+          className={`flex items-center gap-3 transition-all duration-500 ${
+            isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+          style={{ transitionDelay: "250ms" }}
+        >
+          {hasLiveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-2 px-6 py-3 rounded-lg font-mono text-xs uppercase tracking-wider text-white font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(124,58,237,0.3)]"
+              style={{ background: "linear-gradient(135deg, #7c3aed, #db2777)" }}
+            >
+              <ExternalLink className="w-3.5 h-3.5" />
+              Live
+            </a>
+          )}
+          {project.githubUrl && project.githubUrl !== "#" && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-6 py-3 rounded-lg font-mono text-xs uppercase tracking-wider text-gray-500 border border-white/[0.1] hover:text-white hover:border-white/[0.25] transition-all duration-300 hover:-translate-y-0.5"
+            >
+              <Github className="w-3.5 h-3.5" />
+              Code
+            </a>
+          )}
+          {isInProgress && (
+            <span className="font-mono text-[10px] text-amber-900 uppercase tracking-wider">
+              In progress — coming soon
+            </span>
+          )}
+        </div>
+      </div>
+    </div>
+  )
 }
