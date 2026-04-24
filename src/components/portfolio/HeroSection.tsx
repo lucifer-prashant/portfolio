@@ -32,8 +32,8 @@ export function HeroSection() {
         }}
       />
 
-      {/* Faint violet glow bottom-left */}
-      <div className="absolute bottom-0 left-0 w-[600px] h-[400px] bg-violet-900/10 rounded-full blur-[120px] pointer-events-none" />
+      {/* Faint glow bottom-left */}
+      <div className="absolute bottom-0 left-0 w-[600px] h-[400px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Main content — left aligned */}
       <div className="relative z-10 max-w-5xl">
@@ -62,13 +62,7 @@ export function HeroSection() {
             delay={400}
           />
           <span
-            className="block text-[clamp(4rem,12vw,11rem)]"
-            style={{
-              background: "linear-gradient(135deg, #7c3aed 0%, #db2777 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
+            className="block text-[clamp(4rem,12vw,11rem)] text-white"
           >
             Verma.
           </span>
@@ -96,10 +90,7 @@ export function HeroSection() {
           <button
             type="button"
             onClick={() => scrollToSection("projects")}
-            className="group flex items-center gap-2.5 px-7 py-3.5 rounded-lg font-mono text-xs uppercase tracking-widest text-white font-medium transition-all duration-300 btn-lift arrow-nudge hover:shadow-[0_8px_30px_rgba(124,58,237,0.35)]"
-            style={{
-              background: "linear-gradient(135deg, #7c3aed, #db2777)",
-            }}
+            className="group flex items-center gap-2.5 px-7 py-3.5 rounded-lg font-mono text-xs uppercase tracking-widest text-black font-medium transition-all duration-300 btn-lift arrow-nudge hover:shadow-[0_8px_30px_rgba(255,255,255,0.1)] bg-white"
           >
             View Projects
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />

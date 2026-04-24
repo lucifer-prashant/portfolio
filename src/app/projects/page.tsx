@@ -262,8 +262,7 @@ function ProjectModal({
 								href={project.liveUrl}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="flex items-center gap-2 px-6 py-3 rounded-lg font-mono text-xs uppercase tracking-wider text-white font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(124,58,237,0.3)]"
-								style={{ background: "linear-gradient(135deg, #7c3aed, #db2777)" }}
+								className="flex items-center gap-2 px-6 py-3 rounded-lg font-mono text-xs uppercase tracking-wider text-black font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(255,255,255,0.1)] bg-white"
 							>
 								<ExternalLink className="w-3.5 h-3.5" />
 								Live

@@ -66,7 +66,7 @@ export function ProjectsSection() {
 						aria-label={`Go to project ${i + 1}`}
 						className={`rounded-full transition-all duration-300 ${
 							i === activeIndex
-								? "w-6 h-1 bg-violet-500"
+								? "w-6 h-1 bg-white"
 								: "w-1.5 h-1 bg-white/20 hover:bg-white/40"
 						}`}
 					/>
@@ -128,7 +128,7 @@ function ProjectSlide({
 				className="absolute right-8 md:right-16 top-1/2 -translate-y-1/2 font-display font-black select-none leading-none pointer-events-none transition-all duration-700 hidden sm:block"
 				style={{
 					fontSize: "clamp(8rem, 22vw, 22rem)",
-					color: isActive ? "rgba(124,58,237,0.04)" : "rgba(255,255,255,0.015)",
+					color: isActive ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.015)",
 				}}
 			>
 				{String(index + 1).padStart(2, "0")}
@@ -138,7 +138,7 @@ function ProjectSlide({
 			<div
 				className={`absolute left-0 top-1/4 h-1/2 w-[2px] transition-all duration-700 ${
 					isActive
-						? "bg-gradient-to-b from-violet-500/50 to-pink-500/50"
+						? "bg-white/25"
 						: "bg-white/5"
 				}`}
 			/>
@@ -174,7 +174,7 @@ function ProjectSlide({
 					}`}
 					style={{
 						transitionDelay: "100ms",
-						color: "rgba(167,139,250,0.85)",
+						color: "rgba(180,180,180,0.75)",
 					}}
 				>
 					&ldquo;{project.story}&rdquo;
@@ -219,8 +219,7 @@ function ProjectSlide({
 							href={project.liveUrl}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="flex items-center gap-2 px-6 py-3 rounded-lg font-mono text-xs uppercase tracking-wider text-white font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(124,58,237,0.3)]"
-							style={{ background: "linear-gradient(135deg, #7c3aed, #db2777)" }}
+							className="flex items-center gap-2 px-6 py-3 rounded-lg font-mono text-xs uppercase tracking-wider text-black font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(255,255,255,0.1)] bg-white"
 						>
 							<ExternalLink className="w-3.5 h-3.5" />
 							Live
