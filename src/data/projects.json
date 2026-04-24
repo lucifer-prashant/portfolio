@@ -1,0 +1,59 @@
+[
+  {
+    "id": "typing-website",
+    "name": "TypinSpeed",
+    "tagline": "Global typing test platform with real-time leaderboards",
+    "status": "LIVE",
+    "date": "2024",
+    "tech": ["React", "Firebase", "JavaScript"],
+    "description": "Full-stack typing speed test with Firebase auth, real-time WPM tracking, and global leaderboard. Built to make typing practice competitive and addictive.",
+    "liveUrl": "https://typinspeeed.vercel.app/",
+    "githubUrl": "https://github.com/lucifer-prashant/typinspeed",
+    "metrics": {
+      "users": "500+",
+      "avgWPM": "65"
+    }
+  },
+  {
+    "id": "notion-sync",
+    "name": "LLM → Notion Sync",
+    "tagline": "Clipboard automation with AI summarization",
+    "status": "LIVE",
+    "date": "2024",
+    "tech": ["Python", "OpenRouter", "Notion API"],
+    "description": "Desktop app that monitors clipboard, generates LLM summaries, and syncs to Notion. Built for seamless knowledge capture without breaking flow.",
+    "githubUrl": "https://github.com/lucifer-prashant/textToNotion",
+    "metrics": {
+      "summaries": "1000+",
+      "avgTime": "2s"
+    }
+  },
+  {
+    "id": "ml-monitor",
+    "name": "ML-Monitor",
+    "tagline": "Real-time model drift detection dashboard",
+    "status": "LIVE",
+    "date": "2024",
+    "tech": ["Python", "FastAPI", "React", "Pandas"],
+    "description": "Full-stack monitoring app that tracks ML model performance, detects data drift, and triggers alerts when accuracy drops >15% from baseline.",
+    "liveUrl": "https://github.com/lucifer-prashant/ml-monitor",
+    "githubUrl": "https://github.com/lucifer-prashant/ml-monitor",
+    "metrics": {
+      "checks": "10k+",
+      "uptime": "99.2%"
+    }
+  },
+  {
+    "id": "ai-flowchart",
+    "name": "AI Flowchart Generator",
+    "tagline": "Natural language to visual flowcharts",
+    "status": "IN PROGRESS",
+    "date": "2025",
+    "tech": ["React", "OpenAI", "D3.js"],
+    "description": "Converts plain text descriptions into interactive flowcharts using LLMs. Built to make documentation visual and collaborative.",
+    "githubUrl": "#",
+    "metrics": {
+      "charts": "200+"
+    }
+  }
+]
