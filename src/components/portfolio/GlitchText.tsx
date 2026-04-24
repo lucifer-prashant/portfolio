@@ -9,7 +9,7 @@ interface GlitchTextProps {
   delay?: number;
 }
 
-const chars = "!@#$%^&*()_+-=[]{}|;:',.<>?/\\ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+const chars = "▓▒░█▄▀■□▪▫";
 
 export function GlitchText({ text, className = "", scrambleOnLoad = true, delay = 0 }: GlitchTextProps) {
   const [displayText, setDisplayText] = useState(scrambleOnLoad ? "" : text);
@@ -43,7 +43,7 @@ export function GlitchText({ text, className = "", scrambleOnLoad = true, delay 
         }
 
         iteration += 1 / 3;
-      }, 30);
+      }, 40);
     }, delay);
 
     return () => {

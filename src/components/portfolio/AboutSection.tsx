@@ -132,9 +132,10 @@ export function AboutSection() {
 									"TypeScript",
 									"Tailwind CSS",
 									"JavaScript",
-								].map((skill) => (
+								].map((skill, index) => (
 									<span
 										key={skill}
+										style={{ transitionDelay: `${index * 120}ms` }}
 										className="font-body text-sm px-4 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.06] text-gray-400 hover:bg-white/[0.06] hover:border-white/[0.1] hover:text-gray-300 transition-all">
 										{skill}
 									</span>
@@ -149,9 +150,10 @@ export function AboutSection() {
 							</h4>
 							<div className="flex flex-wrap gap-2">
 								{["Python", "FastAPI", "Firebase", "Node.js", "PostgreSQL"].map(
-									(skill) => (
+									(skill, index) => (
 										<span
 											key={skill}
+											style={{ transitionDelay: `${index * 120}ms` }}
 											className="font-body text-sm px-4 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.06] text-gray-400 hover:bg-white/[0.06] hover:border-white/[0.1] hover:text-gray-300 transition-all">
 											{skill}
 										</span>
@@ -167,9 +169,10 @@ export function AboutSection() {
 							</h4>
 							<div className="flex flex-wrap gap-2">
 								{["Pandas", "Docker", "Git", "Linux", "OpenAI API"].map(
-									(skill) => (
+									(skill, index) => (
 										<span
 											key={skill}
+											style={{ transitionDelay: `${index * 120}ms` }}
 											className="font-body text-sm px-4 py-2.5 rounded-lg bg-white/[0.04] border border-white/[0.06] text-gray-400 hover:bg-white/[0.06] hover:border-white/[0.1] hover:text-gray-300 transition-all">
 											{skill}
 										</span>
