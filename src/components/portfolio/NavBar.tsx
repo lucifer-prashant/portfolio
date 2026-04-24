@@ -4,10 +4,13 @@ import { useState, useEffect } from "react"
 import { Download } from "lucide-react"
 import Link from "next/link"
 
+type NavItem =
+  | { label: string; href: string; action?: never }
+  | { label: string; action: () => void; href?: never }
+
 export function NavBar() {
   const [visible, setVisible] = useState(false)
   const [isDownloading, setIsDownloading] = useState(false)
-  const [downloadProgress, setDownloadProgress] = useState(0)
 
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), 300)
@@ -18,23 +21,15 @@ export function NavBar() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
   }
 
-  const handleResumeDownload = async () => {
+  const handleResumeDownload = () => {
     setIsDownloading(true)
-    setDownloadProgress(0)
-    for (let i = 0; i <= 100; i += 10) {
-      await new Promise((resolve) => setTimeout(resolve, 50))
-      setDownloadProgress(i)
-    }
     const link = document.createElement("a")
     link.href = "/resume.pdf"
     link.download = "Prashant_Verma_Resume.pdf"
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
-    setTimeout(() => {
-      setIsDownloading(false)
-      setDownloadProgress(0)
-    }, 300)
+    setTimeout(() => setIsDownloading(false), 1000)
   }
 
   return (
@@ -53,12 +48,14 @@ export function NavBar() {
 
       {/* Nav links — hidden on mobile */}
       <div className="hidden md:flex items-center gap-8">
-        {[
-          { label: "Projects", action: () => scrollToSection("projects") },
-          { label: "Archive", href: "/projects" },
-          { label: "About", action: () => scrollToSection("about") },
-          { label: "Contact", action: () => scrollToSection("contact") },
-        ].map((item) =>
+        {(
+          [
+            { label: "Projects", action: () => scrollToSection("projects") },
+            { label: "Archive", href: "/projects" },
+            { label: "About", action: () => scrollToSection("about") },
+            { label: "Contact", action: () => scrollToSection("contact") },
+          ] as NavItem[]
+        ).map((item) =>
           item.href ? (
             <Link
               key={item.label}
@@ -90,7 +87,7 @@ export function NavBar() {
         {isDownloading ? (
           <>
             <span className="w-3 h-3 border border-white/30 border-t-white rounded-full animate-spin" />
-            {downloadProgress}%
+            <span>Saving...</span>
           </>
         ) : (
           <>
