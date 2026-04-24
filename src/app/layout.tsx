@@ -23,6 +23,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="font-body antialiased">
         {children}
+        <Analytics/>
       </body>
     </html>
   );
