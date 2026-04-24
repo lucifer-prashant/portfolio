@@ -92,7 +92,7 @@ export function NavBar() {
         ) : (
           <>
             <Download className="w-3 h-3" />
-            <span>Resume</span>
+            <span className="hidden sm:inline">Resume</span>
           </>
         )}
       </button>

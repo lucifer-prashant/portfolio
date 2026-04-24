@@ -88,7 +88,7 @@ export function HeroSection() {
 
         {/* CTAs */}
         <div
-          className={`flex items-center gap-4 transition-all duration-700 ${
+          className={`flex flex-wrap items-center gap-4 transition-all duration-700 ${
             mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
           style={{ transitionDelay: "550ms" }}

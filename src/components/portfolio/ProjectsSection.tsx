@@ -127,7 +127,7 @@ function ProjectSlide({
     >
       {/* Giant background number */}
       <div
-        className="absolute right-16 lg:right-32 top-1/2 -translate-y-1/2 font-display font-black select-none leading-none pointer-events-none transition-all duration-700"
+        className="absolute right-4 lg:right-32 top-1/2 -translate-y-1/2 font-display font-black select-none leading-none pointer-events-none transition-all duration-700 hidden sm:block"
         style={{
           fontSize: "clamp(8rem, 22vw, 22rem)",
           color: isActive ? "rgba(124,58,237,0.04)" : "rgba(255,255,255,0.015)",

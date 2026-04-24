@@ -396,4 +396,10 @@
 	.arrow-nudge:hover svg {
 		transform: translateX(3px);
 	}
+
+	@media (max-width: 640px) {
+		.font-display {
+			letter-spacing: -0.02em;
+		}
+	}
 }
