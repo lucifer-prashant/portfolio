@@ -94,6 +94,7 @@ export function HeroSection() {
           style={{ transitionDelay: "550ms" }}
         >
           <button
+            type="button"
             onClick={() => scrollToSection("projects")}
             className="group flex items-center gap-2.5 px-7 py-3.5 rounded-lg font-mono text-xs uppercase tracking-widest text-white font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(124,58,237,0.35)]"
             style={{
@@ -105,6 +106,7 @@ export function HeroSection() {
           </button>
 
           <button
+            type="button"
             onClick={() => scrollToSection("about")}
             className="flex items-center gap-2.5 px-7 py-3.5 rounded-lg font-mono text-xs uppercase tracking-widest text-gray-500 border border-white/[0.1] hover:text-white hover:border-white/[0.25] transition-all duration-300 hover:-translate-y-0.5"
           >
@@ -125,10 +127,11 @@ export function HeroSection() {
         }`}
       >
         <button
+          type="button"
           onClick={() => scrollToSection("projects")}
           className="flex flex-col items-center gap-3 group"
         >
-          <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-gray-800 group-hover:text-gray-600 transition-colors">
+          <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-gray-700 group-hover:text-gray-600 transition-colors">
             Scroll
           </span>
           <div className="relative w-[1px] h-12 bg-gradient-to-b from-gray-700 to-transparent">
