@@ -1,0 +1,41 @@
+[
+  {
+    "id": "sorting-visualizer",
+    "name": "Sorting Visualizer",
+    "description": "Watch 8+ sorting algorithms race in real-time. Compare mode lets you run them side by side with adjustable speed and array size.",
+    "tech": ["Next.js", "TailwindCSS"],
+    "liveUrl": "https://visuasort.vercel.app/",
+    "githubUrl": "https://github.com/lucifer-prashant/sorting-visualizer"
+  },
+  {
+    "id": "falling-sand",
+    "name": "Falling Sand",
+    "description": "Cellular automaton sand simulation in the browser. Drag to pour particles, tune hue and grid resolution in real time.",
+    "tech": ["p5.js", "JavaScript"],
+    "liveUrl": "https://lucifer-prashant.github.io/FallingSand/",
+    "githubUrl": "https://github.com/lucifer-prashant/FallingSand"
+  },
+  {
+    "id": "evosim",
+    "name": "EvoSim",
+    "description": "Autonomous vehicles evolve to seek food and dodge poison via DNA mutation and natural selection. Watch populations adapt in real time.",
+    "tech": ["p5.js", "JavaScript"],
+    "liveUrl": "https://lucifer-prashant.github.io/EvoSim/",
+    "githubUrl": "https://github.com/lucifer-prashant/EvoSim"
+  },
+  {
+    "id": "2048",
+    "name": "2048",
+    "description": "Classic sliding tile puzzle rebuilt with p5.js. Merge matching tiles until you hit 2048.",
+    "tech": ["p5.js", "JavaScript", "Docker"],
+    "liveUrl": "https://lucifer-prashant.github.io/2048_game/",
+    "githubUrl": "https://github.com/lucifer-prashant/2048_game"
+  },
+  {
+    "id": "swiggy-stats",
+    "name": "Swiggy Statistics",
+    "description": "Browser extension that parses your Swiggy order history and surfaces spending stats, favourite restaurants, and order patterns.",
+    "tech": ["Browser Extension", "JavaScript"],
+    "githubUrl": "https://github.com/lucifer-prashant/swiggy-statistics"
+  }
+]

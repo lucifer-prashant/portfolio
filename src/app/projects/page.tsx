@@ -10,28 +10,26 @@ interface Project {
 	name: string
 	tagline: string
 	story: string
-	status: "LIVE" | "ARCHIVED" | "IN PROGRESS"
+	status: "LIVE" | "IN PROGRESS" | "CODE REPO"
 	date: string
 	tech: string[]
 	description: string
 	liveUrl?: string
 	githubUrl: string
-	metrics: Record<string, string>
+	metrics?: Record<string, string>
 }
 
 const projects: Project[] = projectsData as unknown as Project[]
 
 const statusColors = {
 	LIVE: "text-emerald-700",
-	ARCHIVED: "text-gray-600",
 	"IN PROGRESS": "text-amber-700",
+	"CODE REPO": "text-sky-700",
 }
 
 export default function AllProjectsPage() {
 	const [selectedProject, setSelectedProject] = useState<Project | null>(null)
-	const [filter, setFilter] = useState<
-		"ALL" | "LIVE" | "IN PROGRESS" | "ARCHIVED"
-	>("ALL")
+	const [filter, setFilter] = useState<"ALL" | "LIVE" | "IN PROGRESS" | "CODE REPO">("ALL")
 
 	const filteredProjects =
 		filter === "ALL" ? projects : projects.filter((p) => p.status === filter)
@@ -57,19 +55,19 @@ export default function AllProjectsPage() {
 				{/* Header */}
 				<div className="mb-16">
 					<span className="inline-block font-mono text-[10px] text-gray-600 uppercase tracking-[0.25em] mb-6">
-						Project Archive
+						All Work
 					</span>
 					<h1 className="font-display text-5xl md:text-7xl text-white font-black tracking-tighter leading-[0.9] mb-6">
 						All Work.
 					</h1>
 					<p className="font-body text-gray-600 text-base max-w-md leading-relaxed">
-						Experiments, side projects, and production applications — everything I've shipped.
+						Production projects and serious side work — the stuff worth talking about.
 					</p>
 				</div>
 
 				{/* Filters */}
 				<div className="flex flex-wrap gap-2 mb-16">
-					{(["ALL", "LIVE", "IN PROGRESS", "ARCHIVED"] as const).map((status) => (
+					{(["ALL", "LIVE", "IN PROGRESS", "CODE REPO"] as const).map((status) => (
 						<button
 							type="button"
 							key={status}
@@ -131,16 +129,6 @@ export default function AllProjectsPage() {
 										</span>
 									))}
 								</div>
-							</div>
-
-							{/* Metrics */}
-							<div className="hidden md:flex gap-6 shrink-0">
-								{Object.entries(project.metrics).slice(0, 2).map(([key, value]) => (
-									<div key={key} className="text-right">
-										<div className="font-display text-base text-white font-bold">{value}</div>
-										<div className="font-mono text-[9px] text-gray-700 uppercase tracking-wider">{key}</div>
-									</div>
-								))}
 							</div>
 
 							{/* Arrow */}
@@ -238,19 +226,6 @@ function ProjectModal({
 								>
 									{t}
 								</span>
-							))}
-						</div>
-					</div>
-
-					{/* Metrics */}
-					<div>
-						<h4 className="font-mono text-[9px] text-gray-600 uppercase tracking-[0.2em] mb-3">Metrics</h4>
-						<div className="flex gap-8">
-							{Object.entries(project.metrics).map(([key, value]) => (
-								<div key={key}>
-									<div className="font-display text-2xl text-white font-black">{value}</div>
-									<div className="font-mono text-[9px] text-gray-600 uppercase tracking-wider">{key}</div>
-								</div>
 							))}
 						</div>
 					</div>

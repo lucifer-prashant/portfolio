@@ -1,18 +1,23 @@
 "use client"
 
-import { Github, Linkedin, Mail, Phone, ArrowUpRight } from "lucide-react"
+import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react"
+import { useRef } from "react"
 
 export function FooterSection() {
 	const currentYear = new Date().getFullYear()
+	const lastTap = useRef(0)
+
+	const handleCopyrightTap = () => {
+		const now = Date.now()
+		if (now - lastTap.current < 350) {
+			window.dispatchEvent(new CustomEvent("open-terminal"))
+		}
+		lastTap.current = now
+	}
 
 	return (
 		<footer id="contact" className="relative z-10 px-6 md:px-12 lg:px-24 py-32">
-			{/* Minimal gradient */}
-			<div className="absolute inset-0 overflow-hidden pointer-events-none">
-				<div className="absolute bottom-0 left-0 w-[600px] h-[400px] bg-white/[0.01] rounded-full blur-[128px]" />
-			</div>
-
-			{/* Section header */}
+				{/* Section header */}
 			<div className="relative mb-20">
 				<span className="inline-block font-mono text-xs text-gray-600 uppercase tracking-widest mb-6">
 					Contact
@@ -20,39 +25,30 @@ export function FooterSection() {
 				<h2 className="font-display text-5xl md:text-6xl lg:text-7xl text-white font-bold tracking-tighter">
 					Let's Work
 					<br />
-					<span className="gradient-text-subtle">Together</span>
+					Together.
 				</h2>
 			</div>
 
 			<div className="relative grid grid-cols-1 lg:grid-cols-2 gap-16">
 				{/* Left - CTA */}
 				<div>
-					<p className="font-body text-xl text-gray-400 leading-relaxed mb-10">
-						Interested in working together? I'm always open to discussing new
-						projects, creative ideas, or opportunities to be part of your
-						visions.
+					<p className="font-body text-xl text-gray-500 leading-relaxed mb-10">
+						If something I've built is useful to you, or you want to build
+						something together — I'm reachable.
 					</p>
 
 					{/* Email CTA */}
-					<a
-						href="mailto:prashantverma1357@gmail.com"
-						className="inline-block group mb-8">
+					<a href="mailto:prashantverma1357@gmail.com" className="inline-block group">
 						<div className="p-8 rounded-2xl bg-white/[0.02] border border-white/[0.08] hover:border-white/[0.15] transition-all duration-300">
 							<div className="font-mono text-xs text-gray-600 mb-3 uppercase tracking-wider">
 								Email
 							</div>
-							<div className="font-body text-2xl md:text-3xl text-white group-hover:text-gray-300 transition-colors flex items-center gap-3">
+							<div className="font-body text-xl md:text-2xl text-white group-hover:text-gray-300 transition-colors flex items-center gap-3">
 								prashantverma1357@gmail.com
-								<ArrowUpRight className="w-6 h-6 opacity-0 group-hover:opacity-100 transition-opacity" />
+								<ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
 							</div>
 						</div>
 					</a>
-
-					{/* Phone */}
-					<div className="flex items-center gap-3 text-gray-500">
-						<Phone className="w-4 h-4" />
-						<span className="font-mono text-sm">+91-7586985253</span>
-					</div>
 				</div>
 
 				{/* Right - Links */}
@@ -84,25 +80,19 @@ export function FooterSection() {
 			</div>
 
 			{/* Bottom bar */}
-			<div className="relative mt-32 pt-8 border-t border-white/[0.08] flex flex-col md:flex-row justify-between items-center gap-4">
-				<div className="font-mono text-sm text-gray-600">
+			<div className="relative mt-32 pt-8 border-t border-white/[0.08] flex justify-between items-center">
+				<button
+					onClick={handleCopyrightTap}
+					className="font-mono text-sm text-gray-600 hover:text-gray-500 transition-colors select-none"
+				>
 					© {currentYear} Prashant Verma
-				</div>
-				<div className="flex items-center gap-2">
-					<div className="w-1.5 h-1.5 bg-gray-600 rounded-full" />
-					<span className="font-mono text-xs text-gray-600">
-						Bhubaneswar, India
-					</span>
-				</div>
+				</button>
 			</div>
 
-			{/* Hidden Easter egg hint - subtle */}
-			<div
-				className="absolute bottom-4 right-4 
-                font-mono text-[10px] text-white/80
-                bg-black/60 border border-white/[0.08]
-                px-2 py-1 rounded-md">
-				$ try typing "SUDO"
+			{/* Easter egg hint — nearly invisible */}
+			<div className="absolute bottom-4 right-4 font-mono text-[10px] text-white/[0.36] select-none">
+				<span className="hidden md:inline">$ try typing "SUDO"</span>
+				<span className="md:hidden">$ try double-tapping ©</span>
 			</div>
 		</footer>
 	)
@@ -124,7 +114,8 @@ function SocialLink({
 			href={href}
 			target="_blank"
 			rel="noopener noreferrer"
-			className="group flex items-center gap-4 p-6 rounded-xl bg-white/[0.02] border border-white/[0.08] hover:border-white/[0.15] hover:bg-white/[0.04] transition-all">
+			className="group flex items-center gap-4 p-6 rounded-xl bg-white/[0.02] border border-white/[0.08] hover:border-white/[0.15] hover:bg-white/[0.04] transition-all"
+		>
 			<div className="w-10 h-10 rounded-lg bg-white/[0.04] flex items-center justify-center group-hover:bg-white/[0.06] transition-all">
 				<span className="text-gray-500 group-hover:text-gray-400">{icon}</span>
 			</div>

@@ -1,63 +1,69 @@
 [
   {
     "id": "typing-website",
+    "featured": true,
     "name": "TypinSpeed",
     "tagline": "Global typing test platform with real-time leaderboards",
-    "story": "I wanted to know exactly how fast my fingers could go — so I built the tool to measure it.",
+    "story": "My friends and I spent too much time on MonkeyType. Building our own seemed like the obvious next step — and a better excuse to keep going.",
     "status": "LIVE",
     "date": "2024",
     "tech": ["React", "Firebase", "JavaScript"],
     "description": "Full-stack typing speed test with Firebase auth, real-time WPM tracking, and global leaderboard. Built to make typing practice competitive and addictive.",
     "liveUrl": "https://typinspeeed.vercel.app/",
-    "githubUrl": "https://github.com/lucifer-prashant/typinspeed",
-    "metrics": {
-      "users": "500+",
-      "avgWPM": "65"
-    }
+    "githubUrl": "https://github.com/lucifer-prashant/typing",
+    "metrics": {}
   },
   {
     "id": "notion-sync",
     "name": "LLM → Notion",
     "tagline": "Clipboard automation with AI summarization",
-    "story": "Tired of losing AI-generated insights the moment I closed the tab.",
-    "status": "LIVE",
+    "story": "For the rare days I read something worth keeping — a paper, something technical. It captured the insight and pushed it to Notion before I could close the tab.",
+    "status": "CODE REPO",
     "date": "2024",
     "tech": ["Python", "OpenRouter", "Notion API"],
     "description": "Desktop app that monitors clipboard, generates LLM summaries, and syncs to Notion. Built for seamless knowledge capture without breaking flow.",
     "githubUrl": "https://github.com/lucifer-prashant/textToNotion",
-    "metrics": {
-      "summaries": "1000+",
-      "avgTime": "2s"
-    }
+    "metrics": {}
   },
   {
     "id": "ml-monitor",
     "name": "ML-Monitor",
     "tagline": "Real-time model drift detection dashboard",
-    "story": "Production ML was a black box — I had no idea when models silently broke.",
-    "status": "LIVE",
+    "story": "Everyone trains models. Almost nobody tracks when they start degrading. I wanted an alarm for when the black box quietly goes wrong.",
+    "status": "CODE REPO",
     "date": "2024",
     "tech": ["Python", "FastAPI", "React", "Pandas"],
     "description": "Full-stack monitoring app that tracks ML model performance, detects data drift, and triggers alerts when accuracy drops >15% from baseline.",
     "liveUrl": "https://github.com/lucifer-prashant/ml-monitor",
     "githubUrl": "https://github.com/lucifer-prashant/ml-monitor",
-    "metrics": {
-      "checks": "10k+",
-      "uptime": "99.2%"
-    }
+    "metrics": {}
+  },
+  {
+    "id": "duplicate-cleaner",
+    "featured": true,
+    "name": "Duplicate File Cleaner",
+    "tagline": "Fast duplicate detection and one-click cleanup for Windows",
+    "story": "Built on Windows, used it religiously. Switched to Linux six months later — where files don't hide from you. Made my own tool obsolete overnight.",
+    "status": "LIVE",
+    "date": "2024",
+    "tech": ["Electron", "Windows"],
+    "description": "Lightweight Windows desktop app that scans directories for duplicate files with filters by type, size, and modification date. One-click removal, packaged as an installer.",
+    "liveUrl": "https://github.com/lucifer-prashant/DuplicateFileCleaner/releases",
+    "githubUrl": "https://github.com/lucifer-prashant/DuplicateFileCleaner",
+    "metrics": {}
   },
   {
     "id": "ai-flowchart",
+    "featured": true,
     "name": "AI Flowchart",
     "tagline": "Natural language to visual flowcharts",
-    "story": "Documentation is always out of date because no one wants to draw diagrams.",
-    "status": "IN PROGRESS",
+    "story": "Spent too many hours on LucidChart making research diagrams look right. Decided the better investment was building something that does it for me.",
+    "status": "LIVE",
     "date": "2025",
-    "tech": ["React", "OpenAI", "D3.js"],
+    "tech": ["React", "NVIDIA NIM", "D3.js"],
     "description": "Converts plain text descriptions into interactive flowcharts using LLMs. Built to make documentation visual and collaborative.",
-    "githubUrl": "#",
-    "metrics": {
-      "charts": "200+"
-    }
+    "liveUrl": "https://genflowchart.vercel.app/",
+    "githubUrl": "https://github.com/lucifer-prashant/flowchartgen",
+    "metrics": {}
   }
 ]

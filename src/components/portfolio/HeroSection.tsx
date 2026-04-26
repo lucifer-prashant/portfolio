@@ -6,12 +6,9 @@ import { ArrowRight } from "lucide-react"
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false)
-  const [showScroll, setShowScroll] = useState(false)
 
   useEffect(() => {
     setMounted(true)
-    const timer = setTimeout(() => setShowScroll(true), 1800)
-    return () => clearTimeout(timer)
   }, [])
 
   const scrollToSection = (id: string) => {
@@ -32,8 +29,6 @@ export function HeroSection() {
         }}
       />
 
-      {/* Faint glow bottom-left */}
-      <div className="absolute bottom-0 left-0 w-[600px] h-[400px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Main content — left aligned */}
       <div className="relative z-10 max-w-5xl">
@@ -45,7 +40,7 @@ export function HeroSection() {
           }`}
           style={{ transitionDelay: "100ms" }}
         >
-          Bhubaneswar, India &nbsp;·&nbsp; Full-Stack + ML
+          Full-Stack + ML
         </div>
 
         {/* Name */}
@@ -61,11 +56,12 @@ export function HeroSection() {
             scrambleOnLoad={true}
             delay={400}
           />
-          <span
-            className="block text-[clamp(4rem,12vw,11rem)] text-white"
-          >
-            Verma.
-          </span>
+          <GlitchText
+            text="Verma."
+            className="block text-white text-[clamp(4rem,12vw,11rem)]"
+            scrambleOnLoad={true}
+            delay={700}
+          />
         </h1>
 
         {/* Personality copy */}
@@ -75,9 +71,8 @@ export function HeroSection() {
           }`}
           style={{ transitionDelay: "400ms" }}
         >
-          I build things that feel <span className="text-gray-300">fast</span>,
-          look <span className="text-gray-300">intentional</span>, and occasionally
-          break convention — full-stack products to ML pipelines.
+          I build things that feel <span className="text-gray-300">fast</span> and
+          look <span className="text-gray-300">intentional</span>— full-stack products to ML pipelines.
         </p>
 
         {/* CTAs */}
@@ -106,30 +101,11 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Identity tag — bottom right */}
-      <div className="absolute bottom-12 right-8 lg:right-24 font-mono text-[10px] text-gray-800 hidden lg:block tracking-wider">
+      {/* Identity tag — bottom right
+      <div className="absolute bottom-12 right-8 lg:right-24 font-mono text-[10px] text-gray-500 hidden lg:block tracking-wider">
         // prashant verma
-      </div>
+      </div> */}
 
-      {/* Scroll indicator */}
-      <div
-        className={`absolute bottom-12 left-1/2 -translate-x-1/2 transition-all duration-700 ${
-          showScroll ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-        }`}
-      >
-        <button
-          type="button"
-          onClick={() => scrollToSection("projects")}
-          className="flex flex-col items-center gap-3 group"
-        >
-          <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-gray-700 group-hover:text-gray-600 transition-colors">
-            Scroll
-          </span>
-          <div className="relative w-[1px] h-12 bg-gradient-to-b from-gray-700 to-transparent">
-            <div className="absolute top-0 left-0 w-[1px] h-3 bg-white/60 animate-pulse" />
-          </div>
-        </button>
-      </div>
     </section>
   )
 }
