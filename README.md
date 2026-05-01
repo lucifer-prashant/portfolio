@@ -2,7 +2,8 @@
 
 Personal portfolio site — built with Next.js, Tailwind CSS, and TypeScript.
 
-**Live:** https://prashportfolio.vercel.app/**
+**Live:** https://prashportfolio.vercel.app/
+
 
 ---
 
