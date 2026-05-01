@@ -54,7 +54,6 @@
   },
   {
     "id": "personal-data-dashboard",
-    "featured": true,
     "name": "Personal Data Dashboard",
     "tagline": "Self-hosted dashboard for your GitHub, Spotify, Google Fit and Gmail",
     "story": "I wanted one place to see how I spend my time — commits, steps, music, emails. Every existing option was either too broad or required handing data to someone else.",
