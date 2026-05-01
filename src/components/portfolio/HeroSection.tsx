@@ -57,7 +57,7 @@ export function HeroSection() {
             delay={400}
           />
           <GlitchText
-            text="Verma."
+            text="Verma"
             className="block text-white text-[clamp(4rem,12vw,11rem)]"
             scrambleOnLoad={true}
             delay={700}

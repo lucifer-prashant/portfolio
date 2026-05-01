@@ -53,6 +53,20 @@
     "metrics": {}
   },
   {
+    "id": "personal-data-dashboard",
+    "featured": true,
+    "name": "Personal Data Dashboard",
+    "tagline": "Self-hosted dashboard for your GitHub, Spotify, Google Fit and Gmail",
+    "story": "I wanted one place to see how I spend my time — commits, steps, music, emails. Every existing option was either too broad or required handing data to someone else.",
+    "status": "LIVE",
+    "date": "2025",
+    "tech": ["Next.js", "NextAuth", "Recharts", "Tailwind CSS"],
+    "description": "Self-hostable dashboard that visualises GitHub commit heatmaps, Google Fit step trends, Spotify listening history, and Gmail activity. Ships with realistic demo data out of the box — fork, set your OAuth keys, deploy to Vercel.",
+    "liveUrl": "https://datadbpersonal.vercel.app/",
+    "githubUrl": "https://github.com/lucifer-prashant/data-dashboard",
+    "metrics": {}
+  },
+  {
     "id": "ai-flowchart",
     "featured": true,
     "name": "AI Flowchart",

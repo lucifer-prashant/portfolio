@@ -32,6 +32,13 @@
     "githubUrl": "https://github.com/lucifer-prashant/2048_game"
   },
   {
+    "id": "prashcode",
+    "name": "prashcode",
+    "description": "Fork of opencode (Sst's AI coding CLI) with a persistent status bar — shows session timer, active git repo, and live change count while you work.",
+    "tech": ["TypeScript", "Go", "opencode"],
+    "githubUrl": "https://github.com/lucifer-prashant/opencode"
+  },
+  {
     "id": "swiggy-stats",
     "name": "Swiggy Statistics",
     "description": "Browser extension that parses your Swiggy order history and surfaces spending stats, favourite restaurants, and order patterns.",
