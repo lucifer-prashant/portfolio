@@ -47,12 +47,12 @@ export function AboutSection() {
 							AI insights kept dying in chat windows, an ML monitor because
 							production was a black box.
 						</p>
-						<p className="font-body text-lg text-gray-500 leading-relaxed">
+						<p className="font-body text-lg text-gray-400 leading-relaxed">
 							I work across the full stack, from drift-detection pipelines to
 							the interfaces people actually use. CS student at KIIT, graduating
 							soon. The work is the résumé.
 						</p>
-						<p className="font-body text-lg text-gray-500 leading-relaxed">
+						<p className="font-body text-lg text-gray-400 leading-relaxed">
 							Most of what I build touches AI in some way — integrating models,
 							tracking when they degrade, generating outputs people actually use.
 							AI right now feels like an arms race. I'm more interested in what
@@ -77,7 +77,7 @@ export function AboutSection() {
 					<span className="font-mono text-xs text-gray-600 uppercase tracking-widest">
 						Stack
 					</span>
-					<p className="font-mono text-sm text-gray-500 leading-loose mt-6">
+					<p className="font-mono text-sm text-gray-400 leading-loose mt-6">
 						React · Next.js · TypeScript · JavaScript · Tailwind
 						<br />
 						Python · FastAPI · Firebase · Node.js · PostgreSQL

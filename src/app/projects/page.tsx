@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { ExternalLink, Github, X, ArrowUpRight } from "lucide-react"
 import projectsData from "@/data/projects.json"
-import { NavBar } from "@/components/portfolio/NavBar"
 
 interface Project {
 	id: string
@@ -36,7 +35,6 @@ export default function AllProjectsPage() {
 
 	return (
 		<main className="relative min-h-screen bg-[#0a0a0a] overflow-x-hidden">
-			<NavBar />
 
 			{/* Subtle dot grid */}
 			<div
@@ -60,7 +58,7 @@ export default function AllProjectsPage() {
 					<h1 className="font-display text-5xl md:text-7xl text-white font-black tracking-tighter leading-[0.9] mb-6">
 						All Work.
 					</h1>
-					<p className="font-body text-gray-600 text-base max-w-md leading-relaxed">
+					<p className="font-body text-gray-400 text-base max-w-md leading-relaxed">
 						Production projects and serious side work — the stuff worth talking about.
 					</p>
 				</div>
@@ -75,7 +73,7 @@ export default function AllProjectsPage() {
 							className={`font-mono text-[10px] uppercase tracking-[0.12em] px-4 py-2 rounded transition-all duration-200 ${
 								filter === status
 									? "text-white border border-white/[0.25] bg-white/[0.06]"
-									: "text-gray-600 border border-white/[0.08] hover:text-gray-400 hover:border-white/[0.15]"
+									: "text-gray-400 border border-white/[0.08] hover:text-white hover:border-white/[0.15]"
 							}`}
 						>
 							{status}
@@ -115,7 +113,7 @@ export default function AllProjectsPage() {
 									<span className="font-mono text-[9px] text-gray-700">{project.date}</span>
 								</div>
 
-								<p className="font-body text-sm text-gray-600 italic mb-4">
+								<p className="font-body text-sm text-gray-400 italic mb-4">
 									&ldquo;{project.story}&rdquo;
 								</p>
 
@@ -193,7 +191,7 @@ function ProjectModal({
 						<h3 className="font-display text-2xl text-white font-black tracking-tight">
 							{project.name}
 						</h3>
-						<p className="font-body text-sm text-gray-600 italic mt-1">
+						<p className="font-body text-sm text-gray-400 italic mt-1">
 							&ldquo;{project.story}&rdquo;
 						</p>
 					</div>
@@ -212,7 +210,7 @@ function ProjectModal({
 					{/* Description */}
 					<div>
 						<h4 className="font-mono text-[9px] text-gray-600 uppercase tracking-[0.2em] mb-3">About</h4>
-						<p className="font-body text-gray-400 leading-relaxed text-sm">{project.description}</p>
+						<p className="font-body text-gray-300 leading-relaxed text-sm">{project.description}</p>
 					</div>
 
 					{/* Tech stack */}

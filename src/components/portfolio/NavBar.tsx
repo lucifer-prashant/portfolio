@@ -46,7 +46,6 @@ export function NavBar() {
   }
 
   const navLinks = [
-    { label: "Projects", id: "projects" },
     { label: "All Work", href: "/projects" },
     { label: "Lab", href: "/playground", icon: <FlaskConical className="w-3 h-3" /> },
     { label: "About", id: "about" },
@@ -96,7 +95,7 @@ export function NavBar() {
         {/* Desktop nav links */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((item) => {
-            const cls = "relative font-mono text-[11px] uppercase tracking-[0.12em] text-gray-600 hover:text-white transition-colors duration-200 group"
+            const cls = "relative font-mono text-[11px] uppercase tracking-[0.12em] text-gray-400 hover:text-white transition-colors duration-200 group"
             const underline = <span className="absolute -bottom-0.5 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
             return renderLink(item, cls, underline)
           })}
@@ -107,7 +106,7 @@ export function NavBar() {
           <button
             onClick={handleResumeDownload}
             disabled={isDownloading}
-            className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.12em] text-gray-500 hover:text-white border border-white/[0.12] hover:border-white/[0.3] px-4 py-2 rounded transition-all duration-200 disabled:opacity-50 shrink-0"
+            className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.12em] text-gray-400 hover:text-white border border-white/[0.12] hover:border-white/[0.3] px-4 py-2 rounded transition-all duration-200 disabled:opacity-50 shrink-0"
           >
             {isDownloading ? (
               <>
@@ -125,7 +124,7 @@ export function NavBar() {
           {/* Hamburger — mobile only */}
           <button
             onClick={() => setMenuOpen((o) => !o)}
-            className="md:hidden w-8 h-8 flex items-center justify-center text-gray-500 hover:text-white transition-colors"
+            className="md:hidden w-8 h-8 flex items-center justify-center text-gray-400 hover:text-white transition-colors"
             aria-label="Toggle menu"
           >
             {menuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -140,7 +139,7 @@ export function NavBar() {
             {navLinks.map((item) =>
               renderLink(
                 item,
-                "font-mono text-2xl uppercase tracking-[0.1em] text-gray-600 hover:text-white transition-colors duration-200 py-4 border-b border-white/[0.05] block w-full text-left"
+                "font-mono text-2xl uppercase tracking-[0.1em] text-gray-400 hover:text-white transition-colors duration-200 py-4 border-b border-white/[0.05] block w-full text-left"
               )
             )}
           </nav>

@@ -76,7 +76,7 @@ export function ProjectsSection() {
 										{project.name}
 									</h3>
 								</div>
-								<p className="font-body text-sm text-gray-600 italic pl-[18px]">
+								<p className="font-body text-sm text-gray-400 italic pl-[18px]">
 									{project.story}
 								</p>
 							</div>

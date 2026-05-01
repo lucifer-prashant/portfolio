@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { GlitchText } from "./GlitchText"
 import { ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false)
@@ -82,14 +83,13 @@ export function HeroSection() {
           }`}
           style={{ transitionDelay: "550ms" }}
         >
-          <button
-            type="button"
-            onClick={() => scrollToSection("projects")}
+          <Link
+            href="/projects"
             className="group flex items-center gap-2.5 px-7 py-3.5 rounded-lg font-mono text-xs uppercase tracking-widest text-black font-medium transition-all duration-300 btn-lift arrow-nudge hover:shadow-[0_8px_30px_rgba(255,255,255,0.1)] bg-white"
           >
             View Projects
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-          </button>
+          </Link>
 
           <button
             type="button"

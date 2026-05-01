@@ -2,7 +2,6 @@
 
 import { ExternalLink, Github } from "lucide-react"
 import playgroundData from "@/data/playground.json"
-import { NavBar } from "@/components/portfolio/NavBar"
 
 interface Experiment {
   id: string
@@ -18,8 +17,6 @@ const experiments: Experiment[] = playgroundData as Experiment[]
 export default function PlaygroundPage() {
   return (
     <main className="relative min-h-screen bg-[#0a0a0a] overflow-x-hidden">
-      <NavBar />
-
       {/* Dot grid */}
       <div
         className="fixed inset-0 pointer-events-none"
@@ -41,7 +38,7 @@ export default function PlaygroundPage() {
           <h1 className="font-display text-5xl md:text-7xl text-white font-black tracking-tighter leading-[0.9] mb-6">
             Lab.
           </h1>
-          <p className="font-body text-gray-600 text-base max-w-md leading-relaxed">
+          <p className="font-body text-gray-400 text-base max-w-md leading-relaxed">
             Things built for the joy of building — simulations, tools, and weekend tangents that never needed a roadmap.
           </p>
         </div>
@@ -58,7 +55,7 @@ export default function PlaygroundPage() {
                 <h3 className="font-display text-xl text-white font-bold tracking-tight mb-2">
                   {exp.name}
                 </h3>
-                <p className="font-body text-sm text-gray-600 leading-relaxed">
+                <p className="font-body text-sm text-gray-400 leading-relaxed">
                   {exp.description}
                 </p>
               </div>
