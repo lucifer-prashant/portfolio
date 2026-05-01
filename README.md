@@ -2,7 +2,7 @@
 
 Personal portfolio site — built with Next.js, Tailwind CSS, and TypeScript.
 
-**Live:** https://lucifer-prashant.github.io/portfolio *(or wherever it's deployed)*
+**Live:** https://prashportfolio.vercel.app/**
 
 ---
 
