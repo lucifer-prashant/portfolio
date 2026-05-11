@@ -44,5 +44,13 @@
     "description": "Browser extension that parses your Swiggy order history and surfaces spending stats, favourite restaurants, and order patterns.",
     "tech": ["Browser Extension", "JavaScript"],
     "githubUrl": "https://github.com/lucifer-prashant/swiggy-statistics"
+  },
+  {
+    "id": "reddit-npc-generator",
+    "name": "Reddit NPC Generator",
+    "description": "Paste a Reddit username — get an AI-generated NPC profile. Scrapes post history, runs NLP analysis on writing style and topics, then renders a satirical character card with AI avatar.",
+    "tech": ["React", "FastAPI", "Python", "Kling AI"],
+    "liveUrl": "https://reddit-npc-generator.vercel.app/",
+    "githubUrl": "https://github.com/lucifer-prashant/reddit-npc-generator"
   }
 ]
