@@ -20,12 +20,6 @@ interface Project {
 const allProjects: Project[] = projectsData as unknown as Project[]
 const featuredProjects = allProjects.filter((p) => p.featured)
 
-const statusColors: Record<string, string> = {
-	LIVE: "bg-emerald-500",
-	"IN PROGRESS": "bg-amber-500",
-	"CODE REPO": "bg-sky-500",
-}
-
 export function ProjectsSection() {
 	return (
 		<section id="projects" className="relative z-10 px-6 md:px-12 lg:px-24 py-32">
@@ -68,15 +62,10 @@ export function ProjectsSection() {
 
 							{/* Name + story */}
 							<div className="flex-1 min-w-0">
-								<div className="flex items-center gap-3 mb-1">
-									<span
-										className={`w-1.5 h-1.5 rounded-full shrink-0 ${statusColors[project.status]}`}
-									/>
-									<h3 className="font-display text-2xl md:text-3xl text-white font-bold tracking-tight group-hover:text-gray-300 transition-colors duration-200">
-										{project.name}
-									</h3>
-								</div>
-								<p className="font-body text-sm text-gray-400 italic pl-[18px]">
+								<h3 className="font-display text-2xl md:text-3xl text-white font-bold tracking-tight group-hover:text-gray-300 transition-colors duration-200 mb-1">
+									{project.name}
+								</h3>
+								<p className="font-body text-sm text-gray-400 italic">
 									{project.story}
 								</p>
 							</div>
