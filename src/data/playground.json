@@ -1,5 +1,29 @@
 [
   {
+    "id": "personal-data-dashboard",
+    "name": "Personal Data Dashboard",
+    "description": "Self-hostable dashboard for GitHub commits, Google Fit steps, Spotify listening, and Gmail activity. Ships with demo data — fork, set OAuth keys, deploy.",
+    "tech": ["Next.js", "NextAuth", "Recharts", "Tailwind CSS"],
+    "liveUrl": "https://datadbpersonal.vercel.app/",
+    "githubUrl": "https://github.com/lucifer-prashant/data-dashboard"
+  },
+  {
+    "id": "duplicate-cleaner",
+    "name": "Duplicate File Cleaner",
+    "description": "Lightweight Windows desktop app that scans for duplicate files with type / size / date filters. One-click removal, packaged installer.",
+    "tech": ["Electron", "Windows"],
+    "liveUrl": "https://github.com/lucifer-prashant/DuplicateFileCleaner/releases",
+    "githubUrl": "https://github.com/lucifer-prashant/DuplicateFileCleaner"
+  },
+  {
+    "id": "reddit-npc-generator",
+    "name": "Reddit NPC Generator",
+    "description": "Drop a subreddit — get an AI-generated character of the average poster. Scrapes comments, runs NLP (sentiment, topics, reading grade), LLM generates name/age/job/catchphrase, Pollinations renders a portrait. Compare mode pits two subreddits head-to-head.",
+    "tech": ["React", "FastAPI", "Python", "spaCy", "OpenAI"],
+    "liveUrl": "https://reddit-npc-generator.vercel.app/",
+    "githubUrl": "https://github.com/lucifer-prashant/reddit-npc-generator"
+  },
+  {
     "id": "sorting-visualizer",
     "name": "Sorting Visualizer",
     "description": "Watch 8+ sorting algorithms race in real-time. Compare mode lets you run them side by side with adjustable speed and array size.",
@@ -44,13 +68,5 @@
     "description": "Browser extension that parses your Swiggy order history and surfaces spending stats, favourite restaurants, and order patterns.",
     "tech": ["Browser Extension", "JavaScript"],
     "githubUrl": "https://github.com/lucifer-prashant/swiggy-statistics"
-  },
-  {
-    "id": "reddit-npc-generator",
-    "name": "Reddit NPC Generator",
-    "description": "Paste a Reddit username — get an AI-generated NPC profile. Scrapes post history, runs NLP analysis on writing style and topics, then renders a satirical character card with AI avatar.",
-    "tech": ["React", "FastAPI", "Python", "Kling AI"],
-    "liveUrl": "https://reddit-npc-generator.vercel.app/",
-    "githubUrl": "https://github.com/lucifer-prashant/reddit-npc-generator"
   }
 ]

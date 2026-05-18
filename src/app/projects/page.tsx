@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { createPortal } from "react-dom"
 import { ExternalLink, Github, X, ArrowUpRight } from "lucide-react"
 import projectsData from "@/data/projects.json"
 
@@ -162,12 +163,30 @@ function ProjectModal({
 	project: Project
 	onClose: () => void
 }) {
+	const [mounted, setMounted] = useState(false)
+
+	useEffect(() => {
+		setMounted(true)
+		const prev = document.body.style.overflow
+		document.body.style.overflow = "hidden"
+		const onKey = (e: KeyboardEvent) => {
+			if (e.key === "Escape") onClose()
+		}
+		window.addEventListener("keydown", onKey)
+		return () => {
+			document.body.style.overflow = prev
+			window.removeEventListener("keydown", onKey)
+		}
+	}, [onClose])
+
 	const hasLiveUrl =
 		project.liveUrl &&
 		project.liveUrl !== project.githubUrl &&
 		project.liveUrl !== "#"
 
-	return (
+	if (!mounted) return null
+
+	return createPortal(
 		<div
 			className="fixed inset-0 z-[100] flex items-center justify-center p-4"
 			onClick={onClose}
@@ -262,6 +281,7 @@ function ProjectModal({
 					to { opacity: 1; transform: scale(1) translateY(0); }
 				}
 			`}</style>
-		</div>
+		</div>,
+		document.body
 	)
 }

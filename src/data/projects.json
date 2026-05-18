@@ -1,5 +1,19 @@
 [
   {
+    "id": "deck",
+    "featured": true,
+    "name": "Deck",
+    "tagline": "Spatial workspace for code — terminals, editors, browsers on one infinite canvas",
+    "story": "Wanted my IDE, terminal, browser preview, and notes on one canvas instead of tabbed away into separate windows. Built it for Linux first because that's where I work.",
+    "status": "CODE REPO",
+    "date": "2026",
+    "tech": ["Electron", "React", "TypeScript", "xterm.js", "Monaco"],
+    "description": "Infinite-canvas workspace mixing real xterm + node-pty terminals, code-server / Monaco editors, webview browsers, and notes. Drag panels to dock into tab stacks, pop them out to their own OS window, group into labelled regions. Deep git integration (status, stage, commit, branches, diff, stash, worktrees), jump mode (tmux-style Tab + letter), token tracking for Claude Code / Codex / opencode, multi-canvas tabs, full persistence. GPU-composited drag at 60fps with dozens of panels.",
+    "liveUrl": "https://github.com/lucifer-prashant/deck/releases",
+    "githubUrl": "https://github.com/lucifer-prashant/deck",
+    "metrics": {}
+  },
+  {
     "id": "typing-website",
     "featured": true,
     "name": "TypinSpeed",
@@ -11,6 +25,70 @@
     "description": "Full-stack typing speed test with Firebase auth, real-time WPM tracking, and global leaderboard. Built to make typing practice competitive and addictive.",
     "liveUrl": "https://typinspeeed.vercel.app/",
     "githubUrl": "https://github.com/lucifer-prashant/typing",
+    "metrics": {}
+  },
+  {
+    "id": "ai-flowchart",
+    "featured": true,
+    "name": "AI Flowchart",
+    "tagline": "Natural language to visual flowcharts",
+    "story": "Spent too many hours on LucidChart making research diagrams look right. Decided the better investment was building something that does it for me.",
+    "status": "LIVE",
+    "date": "2025",
+    "tech": ["React", "NVIDIA NIM", "D3.js"],
+    "description": "Converts plain text descriptions into interactive flowcharts using LLMs. Built to make documentation visual and collaborative.",
+    "liveUrl": "https://genflowchart.vercel.app/",
+    "githubUrl": "https://github.com/lucifer-prashant/flowchartgen",
+    "metrics": {}
+  },
+  {
+    "id": "chess-coach",
+    "name": "chess.coach",
+    "tagline": "Local Stockfish + LLM-powered chess coach",
+    "story": "Wanted post-game analysis without uploading PGNs to a third party. Stockfish in the browser, an LLM that explains the why, and a board that scrubs through moves like a video.",
+    "status": "IN PROGRESS",
+    "date": "2026",
+    "tech": ["Next.js", "React", "Stockfish WASM", "chessground", "NVIDIA NIM"],
+    "description": "Play vs Stockfish 18 (WASM, multi-threaded when crossOriginIsolated) right in the browser. Every move classified Best / Good / Inaccuracy / Mistake / Blunder via 12 internal detectors (hung piece, missed mate, allowed fork, early queen, lost tempo). Hint mode renders top-3 engine arrows. Eval bar with smooth transitions, captured material + point lead beside player tags. ← / → arrow keys scrub through played moves. Explore mode branches from any position — move both sides, see what would've happened, return to the live game. Time controls 1+0 → 30+0 with increment, Firebase Google sign-in + Firestore game history, optional NVIDIA NIM commentary via internal /api/coach edge proxy.",
+    "liveUrl": "https://chessmentor-ai.vercel.app/",
+    "githubUrl": "https://github.com/lucifer-prashant/chess-coach",
+    "metrics": {}
+  },
+  {
+    "id": "pdfapp",
+    "name": "pdfforge",
+    "tagline": "Linux-native PDF editor with lossless edits",
+    "story": "Every PDF editor I tried flattened or re-rasterised on save. Wanted one that touches the file as little as the change demands — and ships native on Linux.",
+    "status": "CODE REPO",
+    "date": "2026",
+    "tech": ["Python", "GTK4", "libadwaita", "pikepdf", "PyMuPDF"],
+    "description": "GTK4 + libadwaita PDF editor. Operates directly on PDF objects via pikepdf so page ops (rotate / reorder / split / merge) are byte-precise — no flatten round-trip. Highlight, underline, strikeout, ink, FreeText (bold/italic, inline editor), sticky notes, edit-text with block reflow. Per-tool style popover, annotations sidebar, search with active-match focus, atomic writes with pre-save validation, session restore.",
+    "githubUrl": "https://github.com/lucifer-prashant/pdfapp",
+    "metrics": {}
+  },
+  {
+    "id": "apitester",
+    "name": "API Tester",
+    "tagline": "Local-first API client. Browser only — no backend, no login, no telemetry",
+    "story": "Postman kept asking me to sign in to make a GET request. Built a client that runs entirely in the tab and forgets nothing because it never sent anything anywhere.",
+    "status": "IN PROGRESS",
+    "date": "2026",
+    "tech": ["React", "TypeScript", "Vite"],
+    "description": "Browser-only API client with multi-tab requests, KV editors for params/headers, body modes (json/raw/urlencoded/multipart with multi-file drag), Bearer/Basic/API-Key auth, response viewer with collapsible JSON tree, JSON→TypeScript generator, JWT decode, environments with {{var}} interpolation and built-ins ($uuid, $timestamp, $now, $randomInt). cURL import + code-gen (cURL / fetch / axios / Python requests / Go net/http), visual assertion builder, 500-entry history persisted to localStorage.",
+    "liveUrl": "https://apitester-beta.vercel.app/",
+    "githubUrl": "https://github.com/lucifer-prashant/apitester",
+    "metrics": {}
+  },
+  {
+    "id": "newscondenser",
+    "name": "Condense",
+    "tagline": "Android share-sheet target that TL;DRs any article",
+    "story": "Reading news on mobile means skimming intros and bouncing. Wanted a share-sheet button that hands me 3 sentences before I commit to the whole page.",
+    "status": "CODE REPO",
+    "date": "2026",
+    "tech": ["Kotlin", "Jetpack Compose", "Firebase", "Cloud Functions", "NVIDIA NIM"],
+    "description": "Android app that summarises news / blog articles via Chrome's share sheet. Translucent ShareActivity pops a bottom sheet over the article, Cloud Function pulls HTML through Mozilla Readability and NVIDIA NIM (gpt-oss-120b), returns a 3–4 sentence TL;DR. Per-URL summary cache (shared across users) keeps repeat reads free, 50/day rate limit per user, Firestore for per-user entries, Firebase Auth via Credential Manager.",
+    "githubUrl": "https://github.com/lucifer-prashant/newscondenser",
     "metrics": {}
   },
   {
@@ -36,47 +114,6 @@
     "description": "Full-stack monitoring app that tracks ML model performance, detects data drift, and triggers alerts when accuracy drops >15% from baseline.",
     "liveUrl": "https://github.com/lucifer-prashant/ml-monitor",
     "githubUrl": "https://github.com/lucifer-prashant/ml-monitor",
-    "metrics": {}
-  },
-  {
-    "id": "duplicate-cleaner",
-    "featured": true,
-    "name": "Duplicate File Cleaner",
-    "tagline": "Fast duplicate detection and one-click cleanup for Windows",
-    "story": "Built on Windows, used it religiously. Switched to Linux six months later — where files don't hide from you. Made my own tool obsolete overnight.",
-    "status": "LIVE",
-    "date": "2024",
-    "tech": ["Electron", "Windows"],
-    "description": "Lightweight Windows desktop app that scans directories for duplicate files with filters by type, size, and modification date. One-click removal, packaged as an installer.",
-    "liveUrl": "https://github.com/lucifer-prashant/DuplicateFileCleaner/releases",
-    "githubUrl": "https://github.com/lucifer-prashant/DuplicateFileCleaner",
-    "metrics": {}
-  },
-  {
-    "id": "personal-data-dashboard",
-    "name": "Personal Data Dashboard",
-    "tagline": "Self-hosted dashboard for your GitHub, Spotify, Google Fit and Gmail",
-    "story": "I wanted one place to see how I spend my time — commits, steps, music, emails. Every existing option was either too broad or required handing data to someone else.",
-    "status": "LIVE",
-    "date": "2025",
-    "tech": ["Next.js", "NextAuth", "Recharts", "Tailwind CSS"],
-    "description": "Self-hostable dashboard that visualises GitHub commit heatmaps, Google Fit step trends, Spotify listening history, and Gmail activity. Ships with realistic demo data out of the box — fork, set your OAuth keys, deploy to Vercel.",
-    "liveUrl": "https://datadbpersonal.vercel.app/",
-    "githubUrl": "https://github.com/lucifer-prashant/data-dashboard",
-    "metrics": {}
-  },
-  {
-    "id": "ai-flowchart",
-    "featured": true,
-    "name": "AI Flowchart",
-    "tagline": "Natural language to visual flowcharts",
-    "story": "Spent too many hours on LucidChart making research diagrams look right. Decided the better investment was building something that does it for me.",
-    "status": "LIVE",
-    "date": "2025",
-    "tech": ["React", "NVIDIA NIM", "D3.js"],
-    "description": "Converts plain text descriptions into interactive flowcharts using LLMs. Built to make documentation visual and collaborative.",
-    "liveUrl": "https://genflowchart.vercel.app/",
-    "githubUrl": "https://github.com/lucifer-prashant/flowchartgen",
     "metrics": {}
   }
 ]
